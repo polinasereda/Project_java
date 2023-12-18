@@ -3,25 +3,101 @@
 >
 <head>
     <title>Login page</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600&display=swap" rel="stylesheet">
+<!--    <link href="login.css">-->
+    <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>-->
+    <style type="text/css">
+        .container{
+            background-image: url('img/1.jpg');
+            /*background-repeat: no-repeat;*/
+            margin: 0 auto 0;
+            /*width: 500px;*/
+            /*height: 500px;*/
+
+        }
+        html{
+            background-image: url('img/1.jpg');
+            /*box-sizing: border-box;*/
+            margin: 0;
+
+            padding: 0;
+            height: 650px;
+        }
+        *, ::after, ::before{
+            margin: inherit;
+            padding: inherit;
+        }
+        .main__inner{
+            max-width: 700px;
+            /*margin: 0 auto 0;*/
+            border: 1px solid #000000;
+            margin-top: 20px;
+            margin-bottom: 0;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .form__text{
+            border: 1px solid #000000;
+            background-color: #ffa500;
+            margin: 0 auto 0;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            max-width: 325px;
+            font-weight: 600;
+            font-size: 24px;
+            font-family: 'Comfortaa';
+
+
+            /*justify-items: center;*/
+        }
+        .form__enter{
+            background-color: #ffb833;
+            border: 1px solid #000000;
+            max-width: 300px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 20px;
+            font-weight: 400;
+            font-size: 14px;
+            font-family: 'Comfortaa';
+            grid-row-gap: 5px;
+        }
+        .main__form{
+            margin-top: 20px;
+            margin-bottom: 0;
+            margin-left: auto;
+            margin-right: auto;
+            height: 250px;
+        }
+
+    </style>
 </head>
 <body>
 <main role="main" class="container">
-    <form name="f" method="post" action="/process_login">
-        <h2>Вход в систему</h2>
-        <label for="username">Введите имя пользователя: </label>
-        <input type="text" name="username" id="username"/>
-        <br><br/>
-        <label for="password">Введите пароль: </label>
-        <input type="password" name="password" id="password"/>
-        <br><br/>
-        <input type="submit" value="Войти \ зарегистрироваться"/>
-
-        <div th:if="${param.error}" style="color: red">
-            Ошибка аутентификации
+    <div class="main__inner">
+        <div class="main__form">
+            <div class="form__text">
+                <h2>Вход в систему</h2>
+            </div>
+            <div class="form__enter">
+                <form name="f" method="post" action="/process_login">
+                    <input type="text" name="username" id="username" placeholder="email">
+                    <br>
+                    <input type="password" name="password" id="password" placeholder="password">
+                    <br>
+                    <input type="submit" value="Войти \ зарегистрироваться">
+                    <div th:if="${param.error}" style="color: red">
+                      Ошибка аутентификации
+                    </div>
+                </form>
+            </div>
         </div>
-    </form>
+    </div>
 </main>
 </body>
 </html>
