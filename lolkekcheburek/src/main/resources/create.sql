@@ -62,14 +62,58 @@ VALUES ('adm', 'adm', 'ROLE_ADMIN');
 INSERT INTO users
 VALUES ('ivan', 'ivan');
 
+
 INSERT INTO flights
 VALUES ('A2332', 'Moscow', 'Novosibirsk', '12:03', '13:10', 25000, 32, 'Mon Tue Wed Thu Fri Sat Sun');
+
+INSERT INTO flights
+VALUES ('A2332', 'Moscow', 'Novosibirsk', '12:03', '13:10', 25000, 32, 'Mon Tue Wed Thu Fri Sat Sun');
+
+INSERT INTO flights
+VALUES ('A2332', 'Moscow', 'Novosibirsk', '14:03', '15:10', 25000, 32, 'Mon Tue Wed Thu Fri Sat Sun');
+
+INSERT INTO flights
+VALUES ('A2332', 'Moscow', 'Novosibirsk', '16:03', '17:10', 25000, 32, 'Mon Tue Wed Thu Fri Sat Sun');
+
+INSERT INTO flights
+VALUES ('A2332', 'Moscow', 'Novosibirsk', '10:03', '11:10', 25000, 32, 'Mon Tue Wed Thu Fri Sat Sun');
+
+INSERT INTO flights
+VALUES ('A2332', 'Moscow', 'Novosibirsk', '20:03', '21:10', 25000, 32, 'Mon Tue Wed Thu Fri Sat Sun');
+
+
 
 INSERT INTO flights
 VALUES ('B2332', 'Kemerovo', 'Barnaul', '15:02', '12:10', 30000, 12, 'Mon Wed');
 
 INSERT INTO flights
+VALUES ('B2332', 'Kemerovo', 'Barnaul', '16:02', '13:10', 30000, 12, 'Mon Wed');
+
+INSERT INTO flights
+VALUES ('B2332', 'Kemerovo', 'Barnaul', '17:02', '14:10', 30000, 12, 'Mon Wed');
+
+INSERT INTO flights
+VALUES ('B2332', 'Kemerovo', 'Barnaul', '20:02', '17:10', 30000, 12, 'Mon Wed');
+
+INSERT INTO flights
+VALUES ('B2332', 'Kemerovo', 'Barnaul', '11:02', '8:10', 30000, 12, 'Mon Wed');
+
+
+INSERT INTO flights
 VALUES ('A2233', 'Chita', 'Ufa', '15:01', '12:30', 11000, 12, 'Sat Sun');
+
+INSERT INTO flights
+VALUES ('A2233', 'Chita', 'Ufa', '16:01', '13:30', 11000, 12, 'Sat Sun');
+
+INSERT INTO flights
+VALUES ('A2233', 'Chita', 'Ufa', '17:01', '14:30', 11000, 12, 'Sat Sun');
+
+INSERT INTO flights
+VALUES ('A2233', 'Chita', 'Ufa', '21:01', '18:30', 11000, 12, 'Sat Sun');
+
+INSERT INTO flights
+VALUES ('A2233', 'Chita', 'Ufa', '23:01', '20:30', 11000, 12, 'Sat Sun');
+
 
 INSERT INTO flight_dates(date, flight_number)
 VALUES ('2023-01-10', 'A2332');
@@ -84,7 +128,7 @@ INSERT INTO flight_dates(date, flight_number)
 VALUES ('2023-01-13', 'A2332');
 
 INSERT INTO flight_dates(date, flight_number)
-VALUES ('2023-01-14', 'A2332');
+VALUES ('2023-01-15', 'A2332');
 
 INSERT INTO flight_dates(date, flight_number)
 VALUES ('2023-01-15', 'A2332');
@@ -96,6 +140,24 @@ INSERT INTO flight_dates(date, flight_number)
 VALUES ('2023-01-17', 'A2332');
 
 INSERT INTO flight_dates(date, flight_number)
+VALUES ('2023-01-18', 'A2332');
+
+INSERT INTO flight_dates(date, flight_number)
+VALUES ('2023-01-20', 'A2332');
+
+INSERT INTO flight_dates(date, flight_number)
+VALUES ('2023-01-1', 'B2332');
+
+INSERT INTO flight_dates(date, flight_number)
+VALUES ('2023-01-2', 'B2332');
+
+INSERT INTO flight_dates(date, flight_number)
+VALUES ('2023-01-5', 'B2332');
+
+INSERT INTO flight_dates(date, flight_number)
+VALUES ('2023-01-7', 'B2332');
+
+INSERT INTO flight_dates(date, flight_number)
 VALUES ('2023-01-12', 'B2332');
 
 INSERT INTO flight_dates(date, flight_number)
@@ -103,6 +165,14 @@ VALUES ('2023-01-17', 'A2233');
 
 INSERT INTO flight_dates(date, flight_number)
 VALUES ('2023-01-18', 'A2233');
+
+INSERT INTO flight_dates(date, flight_number)
+VALUES ('2023-01-19', 'A2233');
+
+INSERT INTO flight_dates(date, flight_number)
+VALUES ('2023-01-20', 'A2233');
+
+
 
 SELECT *
 FROM flights;
