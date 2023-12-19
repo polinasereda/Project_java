@@ -8,16 +8,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600&display=swap" rel="stylesheet">
-    <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">-->
+<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">-->
 <!--    <link rel="stylesheet" th:href="@{/styles/main.css}"/>-->
-    <style type="text/css">
+    <style rel="stylesheet" type="text/css">
         .container{
-            /*background-image: url('1.jpg');*/
-            /*background-repeat: no-repeat;*/
             margin: 0 auto 0;
-            /*width: 500px;*/
-            /*height: 500px;*/
-
+        }
+        body{
+            background-image: url("https://plus.unsplash.com/premium_photo-1674834298045-e405bc99076b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8c2t5fGVufDB8MHwwfHx8MA%3D%3D");
+            background-size: 100vw 100vh;
+            background-repeat: no-repeat;
+            padding-top: 60px;
         }
         html{
             box-sizing: border-box;
@@ -30,19 +31,25 @@
             padding: 0;
             box-sizing: inherit;
         }
-        .container{
-
+        a{
+            text-decoration: none;
         }
-        .navbar{
+        a:hover{
+            color: black;
+        }
+        a:visited{
+            color: black;
+        }
 
-            background-color: #ffa500;
-            justify-content: space-between;
+        .navbar{
+            /*background-color: #ffa500;*/
+            margin-bottom: 20px;
             height: 75px;
             align-items: center;
+            justify-content: space-between;
+            background-color: #BCDDFF;
+            opacity: 75%;
             display: flex;
-
-        }
-        .container-fluid{
 
         }
         #files{
@@ -53,17 +60,21 @@
         }
         #main__btn{
             padding: 0 5px;
-        }
-        .card{
-
+            font-weight: 400;
+            font-size: 14px;
+            font-family: 'Comfortaa';
         }
         .card-body{
-
+            background-color: #BCDDFF;
+            opacity: 75%;
+            font-weight: 400;
+            font-size: 14px;
+            font-family: 'Comfortaa';
         }
         .container{
             width: 900px;
             margin: 0 auto 0;
-            border: 1px solid #000000;
+            /*border: 1px solid #000000;*/
         }
         .nav-link{
             padding-left: 20px;
@@ -71,17 +82,16 @@
             font-weight: 400;
             font-family: 'Comfortaa';
         }
-        .navbar-brand{
+        .navbar-brand {
             padding-right: 20px;
             font-size: 24px;
             font-weight: 400;
             font-family: 'Comfortaa';
         }
-        .container-fluid{
-
-        }
-        div{
-            background-color: #ffdb99;
+        #files{
+            font-weight: 400;
+            font-size: 14px;
+            font-family: 'Comfortaa';
         }
         .main__form{
             padding-bottom: 10px;
@@ -102,10 +112,6 @@
         h6{
             font-size: 16px;
         }
-        tr{
-            font-family: 'Comfortaa';
-            margin-left: 10px;
-        }
 
 
     </style>
@@ -115,7 +121,7 @@
 <header role="main" class="container">
     <nav class="navbar navbar-light bg-light">
         <form th:method="GET" th:action="@{/logout}">
-            <a class="nav-link" href="/logout" style="color: black">Выход</a>
+            <a class="nav-link" href="/logout" >Выход</a>
         </form>
         <span class="navbar-brand mb-0 h1">Admin</span>
     </nav>
