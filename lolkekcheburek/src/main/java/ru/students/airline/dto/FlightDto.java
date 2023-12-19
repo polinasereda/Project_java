@@ -6,24 +6,24 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalTime;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Data // Lombok аннотация для автоматического создания геттеров, сеттеров, equals, hashCode и toString
+@NoArgsConstructor // Lombok аннотация для создания конструктора без аргументов
+@AllArgsConstructor // Lombok аннотация для создания конструктора со всеми аргументами
 public class FlightDto {
 
-    String number;
+    String number; // Уникальный номер рейса
 
-    private String departureCity;
+    private String departureCity; // Город отправления
 
-    private String arrivalCity;
+    private String arrivalCity; // Город прибытия
 
-    private LocalTime departureTime;
+    private LocalTime departureTime; // Время отправления
 
-    private LocalTime arrivalTime;
+    private LocalTime arrivalTime; // Время прибытия
 
-    private Integer cost;
+    private Integer cost; // Стоимость билета
 
-    private Integer seats;
+    private Integer seats; // Количество мест в самолете
 
-    private String weekdays;
+    private String weekdays; // Дни недели, в которые осуществляется рейс
 }

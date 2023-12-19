@@ -13,25 +13,25 @@ import ru.students.airline.services.FlightService;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@Controller
-@RequiredArgsConstructor
+@Controller // Обозначает, что класс является контроллером в Spring MVC
+@RequiredArgsConstructor // Lombok аннотация, автоматически создающая конструктор для всех final полей
 public class AdminController {
 
-    private final FlightService flightService;
-    private final FileService fileService;
+    private final FlightService flightService; // Сервис для работы с данными о рейсах
+    private final FileService fileService; // Сервис для работы с файлами
 
-    @GetMapping(value = "/admin")
+    @GetMapping(value = "/admin") // Обработчик GET запроса для страницы администратора
     public ModelAndView adminPage() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("admin");
-        modelAndView.getModel().put("flights", flightService.getAllFlights());//размешаем данные на сайте
-        return modelAndView;
+        modelAndView.setViewName("admin"); // Указывает на использование шаблона "admin" для отображения страницы
+        modelAndView.getModel().put("flights", flightService.getAllFlights()); // Добавляет данные о всех рейсах в модель
+        return modelAndView; // Возвращает модель и представление для отображения
     }
 
-    @PostMapping(value = "/upload")
+    @PostMapping(value = "/upload") // Обработчик POST запроса для загрузки файла
     public void handleFileUpload(@RequestParam("file") MultipartFile file,
                                  HttpServletResponse response) throws IOException {
-        fileService.uploadFile(file);
-        response.sendRedirect("/admin");// возврат на страницу admin
+        fileService.uploadFile(file); // Вызывает метод для загрузки файла
+        response.sendRedirect("/admin"); // После загрузки перенаправляет обратно на страницу администратора
     }
 }
