@@ -9,36 +9,36 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import ru.students.airline.security.CustomAuthProvider;
 
-@EnableWebSecurity
-@RequiredArgsConstructor
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+@EnableWebSecurity // Включает защиту веб-безопасности для проекта
+@RequiredArgsConstructor // Lombok аннотация для создания конструктора с обязательными аргументами
+@EnableGlobalMethodSecurity(prePostEnabled = true) // Включает глобальную методную безопасность
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-    //Просто конфигурация того какие страницы можно показывать только админу, какие можно показывать всем,
-    // какая основная страница логина
-    private final AuthenticationSuccessHandler successHandler;
-    private final CustomAuthProvider provider;
+
+    private final AuthenticationSuccessHandler successHandler; // Обработчик успешной аутентификации
+    private final CustomAuthProvider provider; // Поставщик пользовательской аутентификации
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http    .csrf().disable()
-                .authorizeRequests()
-                .antMatchers("/admin, /upload").hasRole("ADMIN")
-                .antMatchers("/auth/login", "/auth/registration", "/error").permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .formLogin()
-                .loginPage("/auth/login")
-                .loginProcessingUrl("/process_login")
-                .successHandler(successHandler)
-                .failureUrl("/auth/login?error")
-                .and()
-                .logout()
-                .logoutUrl("/logout")
-                .logoutSuccessUrl("/auth/login");
+        http
+            .csrf().disable() // Отключает CSRF защиту
+            .authorizeRequests() // Начинает создание правил авторизации
+            .antMatchers("/admin, /upload").hasRole("ADMIN") // Определяет доступ только для пользователей с ролью ADMIN
+            .antMatchers("/auth/login", "/auth/registration", "/error").permitAll() // Позволяет всем доступ к указанным страницам
+            .anyRequest().authenticated() // Требует аутентификации для всех остальных запросов
+            .and()
+            .formLogin() // Включает форму логина
+            .loginPage("/auth/login") // Устанавливает страницу логина
+            .loginProcessingUrl("/process_login") // Устанавливает URL для обработки формы логина
+            .successHandler(successHandler) // Назначает обработчик успешной аутентификации
+            .failureUrl("/auth/login?error") // Устанавливает URL для случая ошибки входа
+            .and()
+            .logout() // Настраивает выход из системы
+            .logoutUrl("/logout") // Устанавливает URL для выхода из системы
+            .logoutSuccessUrl("/auth/login"); // Устанавливает URL при успешном выходе
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(provider);
+        auth.authenticationProvider(provider); // Настраивает поставщика аутентификации
     }
 }

@@ -4,19 +4,18 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Data // Lombok аннотация для автоматического создания геттеров, сеттеров, equals, hashCode и toString методов
+@NoArgsConstructor // Lombok аннотация для создания конструктора без аргументов
+@AllArgsConstructor // Lombok аннотация для создания конструктора со всеми полями класса в качестве аргументов
 public class FlightRequestDto {
-    // когда мы ищем рейс заполняем данные на сайте и они переходят сюда
+    // Этот класс используется для передачи данных запроса на поиск рейсов.
+    // Пользователь заполняет эти данные на веб-странице, и они переносятся в этот объект.
 
-    private String date;
+    private String date; // Дата, на которую пользователь ищет рейс
 
-    private String arrivalCity;
+    private String arrivalCity; // Город прибытия, который пользователь хочет найти
 
-    private String departureCity;
+    private String departureCity; // Город отправления, который пользователь хочет найти
 
-    private int neededSeats;
-
+    private int neededSeats; // Количество необходимых мест, которое пользователь хочет забронировать
 }
