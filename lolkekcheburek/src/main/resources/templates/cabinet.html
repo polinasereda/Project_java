@@ -3,65 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <title>Personal account</title>
-<!--     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" th:href="@{styles/main.css}"/> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600&display=swap" rel="stylesheet">
+<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">-->
+<!--    <link rel="stylesheet" th:href="@{/main/resourses/templates/main.css}">-->
+
+<!--    ОТВЕЧАЕТ ЗА ЛИЧНЫЙ КАБИНЕТ А НЕ ЗА ПОИСК БИЛЕТОВ-->
     <style type="text/css">
         * {
             margin: 0;
             padding: 0;
         }
-
-        p {
-            padding: 10px;
+        body{
+            background-image: url("https://images.unsplash.com/photo-1610889282378-76d4c8440b90?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+            background-size: 100vw 100vh;
+            background-repeat: no-repeat;
         }
-
-        #left {
+        main{
+            max-width: 1000px;
+            margin: 0 auto 0;
+            font-family: 'Comfortaa';
+            font-weight: 600;
+            font-size: 14px;
+        }
+        a{
+            text-decoration: none;
+            color: black;
+        }
+        a:hover{
+            color: black;
+            text-decoration: none;
+        }
+        a:visited{
+            color: black;
+        }
+        .main__nav, .main__inner{
+            /*border: 1px solid #000000;*/
+            height: 66px;
+            font-size: 24px;
+        }
+        .main__nav{
+            display: flex;
+            gap: 100px;
+            align-items: center;
+            position: relative;
+            padding-left: 30px;
+            font-size: 24px;
+        }
+        #nav-link{
             position: absolute;
-            left: 5%;
-            top: 10%;
-            width: 40%;
+            top: 18px;
+            right: 30px;
+        }
+        .information, .order{
+            /*border: 1px solid #000000;*/
+        }
+        .order{
+            max-width: 250px;
+        }
+        #price2{
+            margin-bottom: 10px;
+            max-width: 250px;
+        }
+        #cities, #price, #time{
+            /*border: 1px solid #000000;*/
+            margin-bottom: 3px;
         }
 
-        #right {
-            position: absolute;
-            right: 0;
-            top: 10%;
-            width: 40%;
-        }
+
+
+
+
+
+
     </style>
 </head>
 <body>
 <main role="main" class="container">
-    <div>
-        <nav class="navbar bg-light navbar-light">
-            <ul class="navbar ml-auto" style="height: 40px">
-                <form th:method="GET" th:action="@{/}">
-                    <a class="nav-link" href="/" style="color: black">Поиск билетов</a>
-                </form>
-                <form th:method="GET" th:action="@{/cab}">
-                    <a class="nav-link" href="/cab" style="color: black">Личный кабинет</a>
-                </form>
-                <form th:method="GET" th:action="@{/logout}">
-                    <a class="nav-link" href="/logout" style="color: black">Выход</a>
-                </form>
-            </ul>
-            <ul class="navbar-brand">
-                <tr th:text="${username}">Check it</tr>
-            </ul>
-        </nav>
-    </div>
+    <nav class="navbar bg-light navbar-light main__inner">
+        <ul class="navbar ml-auto main__nav">
+            <form th:method="GET" th:action="@{/}">
+                <a href="/">Поиск билетов</a>
+            </form>
+            <form th:method="GET" th:action="@{/cab}">
+                <a href="/cab">Личный кабинет</a>
+            </form>
+            <form th:method="GET" th:action="@{/logout}">
+                <a id="nav-link" href="/logout">Выход</a>
+            </form>
+        </ul>
+        <ul class="navbar-brand">
+            <tr th:text="${username}">Check it</tr>
+        </ul>
+    </nav>
     <br>
-    <div>
-        <div th:each="order, info : ${orders}" style="border: 2px solid black; background: grey;">
-
-            <a th:href="${'orders/' + order.id}"
-               style="text-decoration: none; color:black;" id="form">
-
-                <div>
+    <div class="information">
+        <div th:each="order, info : ${orders}">
+            <a th:href="${'orders/' + order.id}" id="form">
+                <div class="order">
                     <div id="cities">
-                    <span style="font-weight: bold"
-                          th:text="${order.flight.departureCity + ' -> ' + order.flight.arrivalCity}">
-                        Новосибирск -> Москва</span>
+                    <span th:text="${order.flight.departureCity + ' -> ' + order.flight.arrivalCity}">
+                        Новосибирск -> Москва
+                    </span>
                     </div>
                     <div id="time">
                 <span th:text="${order.flightDate + ' ' + order.flight.departureTime + ' -> '
@@ -70,18 +114,18 @@
                 </span>
                     </div>
                 </div>
-                <div>
+                <div id="price2">
                     <div id="price">
                 <span>
                     <span th:text="${order.flight.getCost() * order.passenger.size() +
             2500 * order.luggageCount() + order.registrationCount() * 50 +
-            order.insuranceCount() * 600}"></span> руб.
+            order.insuranceCount() * 600}"></span>руб.
                 </span>
                     </div>
                 </div>
             </a>
         </div>
-        <br><br/>
+        <br>
     </div>
 </main>
 
